@@ -107,7 +107,10 @@ class HomePageState extends State<HomePage> {
                               TextStyle(color: Colors.black, fontSize: 16.0));
                     } else {
                       this.customIcon = Icon(Icons.search, color: Colors.black);
-                      this.customSearchBar = Text("x");
+                      this.customSearchBar = Text(
+                        "Footy Hub",
+                        style: TextStyle(color: Colors.black, fontSize: 30.0),
+                      );
                     }
                   });
                 },
@@ -178,17 +181,33 @@ class HomePageState extends State<HomePage> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: <Widget>[
-                                            Text(
-                                              raw_data[0]["data"][index]["time"]
-                                                      ["minute"]
-                                                  .toString(),
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 8.0,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            )
+                                            raw_data[0]["data"][index]["time"]
+                                                        ["status"] ==
+                                                    "LIVE"
+                                                ? Text(
+                                                    raw_data[0]["data"][index]
+                                                            ["time"]["minute"]
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 8.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                  )
+                                                : Text(
+                                                    raw_data[0]["data"][index]
+                                                            ["time"]["status"]
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 8.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                  )
                                           ]))
                                   : Container(
                                       height: 32.0,
@@ -510,6 +529,7 @@ class HomePageState extends State<HomePage> {
               icon: Icon(FontAwesomeIcons.film),
               title: Text(""),
             ),
+            /*
             BottomNavigationBarItem(
               icon: Icon(FontAwesomeIcons.chartBar),
               title: Text(""),
@@ -518,6 +538,7 @@ class HomePageState extends State<HomePage> {
               icon: Icon(FontAwesomeIcons.clipboard),
               title: Text(""),
             ),
+             */
           ],
         ), //
       );

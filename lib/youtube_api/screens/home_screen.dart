@@ -130,6 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          /*
           BottomNavigationBarItem(
             icon: Icon(FontAwesomeIcons.chartBar),
             title: Text(""),
@@ -138,6 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(FontAwesomeIcons.clipboard),
             title: Text(""),
           ),
+           */
         ],
       ),
     );
