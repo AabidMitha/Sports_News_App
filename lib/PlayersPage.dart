@@ -72,586 +72,613 @@ class PlayersPageState extends State<PlayersPage> {
   Widget build(BuildContext context) {
     if (loaded == true) {
       return Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
           title: Text("" /*widget.playerName*/),
         ),
         body: Center(
           //CHANGE TO container
-          child:
-          player_data == null ||
-              player_data[0]["data"].length == 0 ||
-              player_club_team_data == null ||
-              player_club_team_data[0]["data"].length == 0 ||
-              player_national_team_data == null ||
-              player_national_team_data[0]["data"].length == 0 ?
-          Center(
-              child: Text(
-                "No Matches Found",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 18
+            child:
+            player_data == null ||
+                player_data[0]["data"].length == 0 ||
+                player_club_team_data == null ||
+                player_club_team_data[0]["data"].length == 0 ||
+                player_national_team_data == null ||
+                player_national_team_data[0]["data"].length == 0 ?
+            Center(
+                child: Text(
+                  "No Matches Found",
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 18
+                  ),
+                  textAlign: TextAlign.center,
+                )
+            ) :
+            Container(
+              decoration: player_club_team_data[0]["data"]["venue"]["data"]["image_path"] !=
+                  null ?
+              BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      player_club_team_data[0]["data"]["venue"]["data"]["image_path"]),
+                  fit: BoxFit.cover,
                 ),
-                textAlign: TextAlign.center,
-              )
-          ) :
-
-          ListView.builder(
-              shrinkWrap: true,
-              itemCount: player_data == null ||
-                  player_data[0]["data"].length == 0 ||
-                  player_club_team_data == null ||
-                  player_club_team_data[0]["data"].length == 0 ||
-                  player_national_team_data == null ||
-                  player_national_team_data[0]["data"].length == 0
-                  ? 0
-                  : player_data.length,
-              itemBuilder: (BuildContext context, int index) {
-                return new Container(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(children: <Widget>[
-                      Container(
-                        decoration: new BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            //color: Colors.blue[900],
-                            color: backgroundTheme.color),
-                        padding: const EdgeInsets.only(top: 20, bottom: 20),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            const SizedBox(width: 15.0),
-                            CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  player_data[0]["data"][0]["image_path"]),
-                              backgroundColor: Colors.white,
-                              //backgroundColor: backgroundTheme.color,
-                              radius: 30,
-                            ),
-                            const SizedBox(width: 10.0),
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  SizedBox(
-                                    width:
-                                    MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width / 1.5,
-                                    child: Text(
-                                      player_data[0]["data"][0]["display_name"],
-                                      style: playerNameTextStyle,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 5.0),
-                                  Row(children: <Widget>[
-                                    CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                          player_club_team_data[0]["data"]
-                                          ["logo_path"]),
-                                      //backgroundColor: Colors.blue[900],
-                                      backgroundColor: backgroundTheme.color,
-                                      radius: 15,
-                                    ),
-                                    const SizedBox(width: 5.0),
-                                    Text(
-                                      player_club_team_data[0]["data"]["name"],
-                                      style: TextStyle(
-                                        color: Colors.white,
+              ) :
+              BoxDecoration(
+              ),
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: player_data == null ||
+                      player_data[0]["data"].length == 0 ||
+                      player_club_team_data == null ||
+                      player_club_team_data[0]["data"].length == 0 ||
+                      player_national_team_data == null ||
+                      player_national_team_data[0]["data"].length == 0
+                      ? 0
+                      : player_data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return new Container(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(children: <Widget>[
+                          Container(
+                            decoration: new BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                //color: Colors.blue[900],
+                                color: backgroundTheme.color),
+                            padding: const EdgeInsets.only(top: 20, bottom: 20),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                const SizedBox(width: 15.0),
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      player_data[0]["data"][0]["image_path"]),
+                                  backgroundColor: Colors.white,
+                                  //backgroundColor: backgroundTheme.color,
+                                  radius: 30,
+                                ),
+                                const SizedBox(width: 10.0),
+                                Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        width:
+                                        MediaQuery
+                                            .of(context)
+                                            .size
+                                            .width / 1.5,
+                                        child: Text(
+                                          player_data[0]["data"][0]["display_name"],
+                                          style: playerNameTextStyle,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
                                       ),
-                                    ),
-                                  ])
-                                ])
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 30.0),
-                      Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
+                                      const SizedBox(height: 5.0),
+                                      Row(children: <Widget>[
+                                        CircleAvatar(
+                                          backgroundImage: NetworkImage(
+                                              player_club_team_data[0]["data"]
+                                              ["logo_path"]),
+                                          //backgroundColor: Colors.blue[900],
+                                          backgroundColor: backgroundTheme
+                                              .color,
+                                          radius: 15,
+                                        ),
+                                        const SizedBox(width: 5.0),
+                                        Text(
+                                          player_club_team_data[0]["data"]["name"],
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ])
+                                    ])
+                              ],
+                            ),
                           ),
-                          child: Container(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Column(children: <Widget>[
-                                Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            player_data[0]["data"][0]
-                                            ["height"] ==
-                                                null
-                                                ? Text(
-                                              "N/A",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : Text(
-                                              player_data[0]["data"][0]
-                                              ["height"],
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            ),
-                                            const SizedBox(height: 5.0),
-                                            Text(
-                                              "Height",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
-                                      Spacer(),
-                                      Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            player_data[0]["data"][0]
-                                            ["birthdate"] ==
-                                                null
-                                                ? Text(
-                                              "N/A",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : Text(
-                                              player_data[0]["data"][0]
-                                              ["birthdate"],
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            ),
-                                            const SizedBox(height: 5.0),
-                                            Text(
-                                              "Birthdate",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
-                                      Spacer(),
-                                      Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            player_data[0]["data"][0]
-                                            ["weight"] ==
-                                                null
-                                                ? Text(
-                                              "N/A",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : Text(
-                                              player_data[0]["data"][0]
-                                              ["weight"],
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            ),
-                                            const SizedBox(height: 5.0),
-                                            Text(
-                                              "Weight",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
-                                    ]),
-                                const SizedBox(height: 30.0),
-                                Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            player_data[
-                                            0][
-                                            "data"][0]
-                                            [
-                                            "birthdate"] != null ?
-                                            Text(
-                                              (DateTime
-                                                  .now()
-                                                  .difference(DateFormat(
-                                                  'd/M/yyyy')
-                                                  .parse(player_data[
-                                              0][
-                                              "data"][0]
-                                              [
-                                              "birthdate"]))
-                                                  .inDays /
-                                                  365)
-                                                  .round()
-                                                  .toString(),
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            ) :
-                                            Text(
-                                              "N/A",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            ),
-                                            const SizedBox(height: 5.0),
-                                            Text(
-                                              "Age      ",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
-                                      Spacer(),
-                                      Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            player_national_team_data[
-                                            0]["data"]
-                                            ["image_path"] != null ?
-                                            Row(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                                children: <Widget>[
-                                                  CircleAvatar(
-                                                    backgroundImage: NetworkImage(
-                                                        player_national_team_data[
-                                                        0]["data"]
-                                                        ["image_path"]),
-                                                    backgroundColor:
-                                                    Colors.white,
-                                                    radius: 10,
-                                                  ),
-                                                  const SizedBox(width: 5.0),
-                                                  Text(
-                                                    player_national_team_data[0]
-                                                    ["data"]["name"],
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(),
-                                                  ),
-                                                ]) :
-                                            Row(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Text(
-                                                    player_national_team_data[0]
-                                                    ["data"]["name"],
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(),
-                                                  ),
-                                                ]),
-                                            const SizedBox(height: 5.0),
-                                            Text(
-                                              "Country",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
-                                      Spacer(),
-                                      Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            Text(
-                                              player_position_map[player_data[0]
-                                              ["data"][0]["position_id"]],
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            ),
-                                            const SizedBox(height: 5.0),
-                                            Text(
-                                              "Pos      ",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
-                                    ]),
-                                const SizedBox(height: 30.0),
-                                new Divider(),
-                                const SizedBox(height: 30.0),
-                                Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      active_league_name != null ?
-                                      Row(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            Image.network(
-                                                active_league_logo, width: 20,
-                                                height: 20),
-                                            //const SizedBox(width: 5.0),
-                                            //THIS IS ANNOYING!
-                                            SizedBox(
-                                              width:
-                                              MediaQuery
-                                                  .of(context)
-                                                  .size
-                                                  .width / 2,
-                                              child: Text(
-                                                active_league_name,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
+                          const SizedBox(height: 30.0),
+                          Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              child: Container(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Column(children: <Widget>[
+                                    Row(
+                                        mainAxisAlignment: MainAxisAlignment
+                                            .center,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                player_data[0]["data"][0]
+                                                ["height"] ==
+                                                    null
+                                                    ? Text(
+                                                  "N/A",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : Text(
+                                                  player_data[0]["data"][0]
+                                                  ["height"],
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
                                                 ),
-                                              ),
-                                            ),
-                                          ]) :
-                                      Row(),
-                                    ]),
-                                active_league_name != null ?
-                                const SizedBox(height: 30.0)
-                                    : const SizedBox(),
-                                player_latest_season_data[0]
-                                ["data"]
-                                ["stats"]
-                                ["data"].length != 0 ?
-                                Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            player_latest_season_data[0]["data"]
-                                            ["stats"]["data"][0]
-                                            ["appearences"] ==
-                                                null
-                                                ? Text(
-                                              "N/A",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : Text(
-                                              player_latest_season_data[0]
-                                              ["data"]
-                                              ["stats"]
-                                              ["data"][0]
-                                              ["appearences"]
-                                                  .toString(),
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(),
-                                            ),
-                                            const SizedBox(height: 5.0),
-                                            Text(
-                                              "Games",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
-                                      Spacer(),
-                                      Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            player_position_map[player_data[0]
-                                            ["data"][0]
-                                            ["position_id"]] ==
-                                                'GK'
-                                                ? player_latest_season_data[0]
-                                            ["data"]
-                                            ["stats"]
-                                            ["data"][0]
-                                            ["saves"] ==
-                                                null
-                                                ? Text(
-                                              "N/A",
-                                              textAlign:
-                                              TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : Text(
-                                              "  " + player_latest_season_data[
-                                              0]
-                                              ["data"]
-                                              ["stats"][
-                                              "data"][0]["saves"]
-                                                  .toString(),
-                                              textAlign:
-                                              TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : player_latest_season_data[0]
-                                            ["data"]
-                                            ["stats"]
-                                            ["data"][0]
-                                            ["goals"] ==
-                                                null
-                                                ? Text(
-                                              "N/A",
-                                              textAlign:
-                                              TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : Text(
-                                              "  " + player_latest_season_data[
-                                              0]
-                                              ["data"]
-                                              ["stats"][
-                                              "data"][0]["goals"]
-                                                  .toString(),
-                                              textAlign:
-                                              TextAlign.center,
-                                              style: TextStyle(),
-                                            ),
-                                            const SizedBox(height: 5.0),
-                                            player_position_map[player_data[0]
-                                            ["data"][0]
-                                            ["position_id"]] ==
-                                                'GK'
-                                                ? Text(
-                                              "  Saves",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            )
-                                                : Text(
-                                              "  Goals",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
-                                      Spacer(),
-                                      Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            player_position_map[player_data[0]
-                                            ["data"][0]
-                                            ["position_id"]] ==
-                                                'GK'
-                                                ? player_latest_season_data[0]
-                                            ["data"]
-                                            ["stats"]
-                                            ["data"][0]
-                                            ["duels"] ==
-                                                null
-                                                ? Text(
-                                              "N/A",
-                                              textAlign:
-                                              TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : Text(
-                                              player_latest_season_data[0]["data"]["stats"]
-                                              ["data"][0]
-                                              ["duels"]
-                                              ["won"]
-                                                  .toString() +
-                                                  "/" +
-                                                  player_latest_season_data[0]
-                                                  ["data"]
-                                                  [
-                                                  "stats"]
-                                                  [
+                                                const SizedBox(height: 5.0),
+                                                Text(
+                                                  "Height",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ]),
+                                          Spacer(),
+                                          Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                player_data[0]["data"][0]
+                                                ["birthdate"] ==
+                                                    null
+                                                    ? Text(
+                                                  "N/A",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : Text(
+                                                  player_data[0]["data"][0]
+                                                  ["birthdate"],
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                ),
+                                                const SizedBox(height: 5.0),
+                                                Text(
+                                                  "Birthdate",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ]),
+                                          Spacer(),
+                                          Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                player_data[0]["data"][0]
+                                                ["weight"] ==
+                                                    null
+                                                    ? Text(
+                                                  "N/A",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : Text(
+                                                  player_data[0]["data"][0]
+                                                  ["weight"],
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                ),
+                                                const SizedBox(height: 5.0),
+                                                Text(
+                                                  "Weight",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ]),
+                                        ]),
+                                    const SizedBox(height: 30.0),
+                                    Row(
+                                        mainAxisAlignment: MainAxisAlignment
+                                            .center,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                player_data[
+                                                0][
+                                                "data"][0]
+                                                [
+                                                "birthdate"] != null ?
+                                                Text(
+                                                  (DateTime
+                                                      .now()
+                                                      .difference(DateFormat(
+                                                      'd/M/yyyy')
+                                                      .parse(player_data[
+                                                  0][
                                                   "data"][0]
                                                   [
-                                                  "duels"]["total"]
+                                                  "birthdate"]))
+                                                      .inDays /
+                                                      365)
+                                                      .round()
                                                       .toString(),
-                                              textAlign:
-                                              TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : player_latest_season_data[0]
-                                            ["data"]
-                                            ["stats"]
-                                            ["data"][0]
-                                            ["assists"] ==
-                                                null
-                                                ? Text(
-                                              "N/A",
-                                              textAlign:
-                                              TextAlign.center,
-                                              style: TextStyle(),
-                                            )
-                                                : Text(
-                                              player_latest_season_data[
-                                              0]
-                                              ["data"]
-                                              [
-                                              "stats"]["data"]
-                                              [0]["assists"]
-                                                  .toString(),
-                                              textAlign:
-                                              TextAlign.center,
-                                              style: TextStyle(),
-                                            ),
-                                            const SizedBox(height: 5.0),
-                                            player_position_map[player_data[0]
-                                            ["data"][0]
-                                            ["position_id"]] ==
-                                                'GK'
-                                                ? Text(
-                                              "Duels   ",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            )
-                                                : Text(
-                                              "Assists",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
-                                    ]) :
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "No Stats Available",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                      ),
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                ) :
+                                                Text(
+                                                  "N/A",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                ),
+                                                const SizedBox(height: 5.0),
+                                                Text(
+                                                  "Age      ",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ]),
+                                          Spacer(),
+                                          Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                player_national_team_data[
+                                                0]["data"]
+                                                ["image_path"] != null ?
+                                                Row(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                    children: <Widget>[
+                                                      CircleAvatar(
+                                                        backgroundImage: NetworkImage(
+                                                            player_national_team_data[
+                                                            0]["data"]
+                                                            ["image_path"]),
+                                                        backgroundColor:
+                                                        Colors.white,
+                                                        radius: 10,
+                                                      ),
+                                                      const SizedBox(
+                                                          width: 5.0),
+                                                      Text(
+                                                        player_national_team_data[0]
+                                                        ["data"]["name"],
+                                                        textAlign: TextAlign
+                                                            .center,
+                                                        style: TextStyle(),
+                                                      ),
+                                                    ]) :
+                                                Row(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                    children: <Widget>[
+                                                      Text(
+                                                        player_national_team_data[0]
+                                                        ["data"]["name"],
+                                                        textAlign: TextAlign
+                                                            .center,
+                                                        style: TextStyle(),
+                                                      ),
+                                                    ]),
+                                                const SizedBox(height: 5.0),
+                                                Text(
+                                                  "Country",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ]),
+                                          Spacer(),
+                                          Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                Text(
+                                                  player_position_map[player_data[0]
+                                                  ["data"][0]["position_id"]],
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                ),
+                                                const SizedBox(height: 5.0),
+                                                Text(
+                                                  "Pos      ",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ]),
+                                        ]),
+                                    const SizedBox(height: 30.0),
+                                    new Divider(),
+                                    const SizedBox(height: 30.0),
+                                    Row(
+                                        mainAxisAlignment: MainAxisAlignment
+                                            .center,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          active_league_name != null ?
+                                          Row(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                Image.network(
+                                                    active_league_logo,
+                                                    width: 20,
+                                                    height: 20),
+                                                //const SizedBox(width: 5.0),
+                                                //THIS IS ANNOYING!
+                                                SizedBox(
+                                                  width:
+                                                  MediaQuery
+                                                      .of(context)
+                                                      .size
+                                                      .width / 2,
+                                                  child: Text(
+                                                    active_league_name,
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight
+                                                          .bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ]) :
+                                          Row(),
+                                        ]),
+                                    active_league_name != null ?
+                                    const SizedBox(height: 30.0)
+                                        : const SizedBox(),
+                                    player_latest_season_data[0]
+                                    ["data"]
+                                    ["stats"]
+                                    ["data"].length != 0 ?
+                                    Row(
+                                        mainAxisAlignment: MainAxisAlignment
+                                            .center,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                player_latest_season_data[0]["data"]
+                                                ["stats"]["data"][0]
+                                                ["appearences"] ==
+                                                    null
+                                                    ? Text(
+                                                  "N/A",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : Text(
+                                                  player_latest_season_data[0]
+                                                  ["data"]
+                                                  ["stats"]
+                                                  ["data"][0]
+                                                  ["appearences"]
+                                                      .toString(),
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(),
+                                                ),
+                                                const SizedBox(height: 5.0),
+                                                Text(
+                                                  "Games",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ]),
+                                          Spacer(),
+                                          Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                player_position_map[player_data[0]
+                                                ["data"][0]
+                                                ["position_id"]] ==
+                                                    'GK'
+                                                    ? player_latest_season_data[0]
+                                                ["data"]
+                                                ["stats"]
+                                                ["data"][0]
+                                                ["saves"] ==
+                                                    null
+                                                    ? Text(
+                                                  "N/A",
+                                                  textAlign:
+                                                  TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : Text(
+                                                  "  " +
+                                                      player_latest_season_data[
+                                                      0]
+                                                      ["data"]
+                                                      ["stats"][
+                                                      "data"][0]["saves"]
+                                                          .toString(),
+                                                  textAlign:
+                                                  TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : player_latest_season_data[0]
+                                                ["data"]
+                                                ["stats"]
+                                                ["data"][0]
+                                                ["goals"] ==
+                                                    null
+                                                    ? Text(
+                                                  "N/A",
+                                                  textAlign:
+                                                  TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : Text(
+                                                  "  " +
+                                                      player_latest_season_data[
+                                                      0]
+                                                      ["data"]
+                                                      ["stats"][
+                                                      "data"][0]["goals"]
+                                                          .toString(),
+                                                  textAlign:
+                                                  TextAlign.center,
+                                                  style: TextStyle(),
+                                                ),
+                                                const SizedBox(height: 5.0),
+                                                player_position_map[player_data[0]
+                                                ["data"][0]
+                                                ["position_id"]] ==
+                                                    'GK'
+                                                    ? Text(
+                                                  "  Saves",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                )
+                                                    : Text(
+                                                  "  Goals",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ]),
+                                          Spacer(),
+                                          Column(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                player_position_map[player_data[0]
+                                                ["data"][0]
+                                                ["position_id"]] ==
+                                                    'GK'
+                                                    ? player_latest_season_data[0]
+                                                ["data"]
+                                                ["stats"]
+                                                ["data"][0]
+                                                ["duels"] ==
+                                                    null
+                                                    ? Text(
+                                                  "N/A",
+                                                  textAlign:
+                                                  TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : Text(
+                                                  player_latest_season_data[0]["data"]["stats"]
+                                                  ["data"][0]
+                                                  ["duels"]
+                                                  ["won"]
+                                                      .toString() +
+                                                      "/" +
+                                                      player_latest_season_data[0]
+                                                      ["data"]
+                                                      [
+                                                      "stats"]
+                                                      [
+                                                      "data"][0]
+                                                      [
+                                                      "duels"]["total"]
+                                                          .toString(),
+                                                  textAlign:
+                                                  TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : player_latest_season_data[0]
+                                                ["data"]
+                                                ["stats"]
+                                                ["data"][0]
+                                                ["assists"] ==
+                                                    null
+                                                    ? Text(
+                                                  "N/A",
+                                                  textAlign:
+                                                  TextAlign.center,
+                                                  style: TextStyle(),
+                                                )
+                                                    : Text(
+                                                  player_latest_season_data[
+                                                  0]
+                                                  ["data"]
+                                                  [
+                                                  "stats"]["data"]
+                                                  [0]["assists"]
+                                                      .toString(),
+                                                  textAlign:
+                                                  TextAlign.center,
+                                                  style: TextStyle(),
+                                                ),
+                                                const SizedBox(height: 5.0),
+                                                player_position_map[player_data[0]
+                                                ["data"][0]
+                                                ["position_id"]] ==
+                                                    'GK'
+                                                    ? Text(
+                                                  "Duels   ",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                )
+                                                    : Text(
+                                                  "Assists",
+                                                  style: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ]),
+                                        ]) :
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment
+                                          .center,
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "No Stats Available",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                          ),
+                                        )
+                                      ],
                                     )
-                                  ],
-                                )
-                              ]))),
-                    ]));
-              }),
+                                  ]))),
+                        ]));
+                  }),
+            )
         ),
       );
     } else {
@@ -711,7 +738,7 @@ class PlayersPageState extends State<PlayersPage> {
       http.Response playerClubTeamResponse = await http.get(
         //Uri.encodeFull removes all the dashes or extra characters present in our Uri
           Uri.encodeFull(
-              "https://soccer.sportmonks.com/api/v2.0/teams/$player_club_team_id?api_token=$SPORTMONKS_GENERAL_API_KEY"),
+              "https://soccer.sportmonks.com/api/v2.0/teams/$player_club_team_id?api_token=$SPORTMONKS_GENERAL_API_KEY&include=country,coach,venue"),
           headers: {
             //if your api require key then pass your key here as well e.g "key": "my-long-key"
             "api_token": SPORTMONKS_GENERAL_API_KEY
@@ -738,7 +765,7 @@ class PlayersPageState extends State<PlayersPage> {
       player_club_team_data = null;
     }
 
-    //Get club team data
+    //Get national team data
     //we have to wait to get the data so we use 'await'
     try {
       http.Response playerNationalTeamResponse = await http.get(
