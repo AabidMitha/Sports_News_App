@@ -73,11 +73,29 @@ class PlayersPageState extends State<PlayersPage> {
     if (loaded == true) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(""/*widget.playerName*/),
+          title: Text("" /*widget.playerName*/),
         ),
         body: Center(
           //CHANGE TO container
-          child: ListView.builder(
+          child:
+          player_data == null ||
+              player_data[0]["data"].length == 0 ||
+              player_club_team_data == null ||
+              player_club_team_data[0]["data"].length == 0 ||
+              player_national_team_data == null ||
+              player_national_team_data[0]["data"].length == 0 ?
+          Center(
+              child: Text(
+                "No Matches Found",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 18
+                ),
+                textAlign: TextAlign.center,
+              )
+          ) :
+
+          ListView.builder(
               shrinkWrap: true,
               itemCount: player_data == null ||
                   player_data[0]["data"].length == 0 ||

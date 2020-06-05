@@ -149,6 +149,8 @@ class HomePageState extends State<HomePage> {
             const SizedBox(height: 5.0),
             raw_data[0]["data"].length != 0
                 ? new ListView.builder(
+                    //remove scrollability from inner listview - ct like its part of outer list view:
+                    physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:
                         raw_data == null ? 0 : raw_data[0]["data"].length,
@@ -461,6 +463,8 @@ class HomePageState extends State<HomePage> {
             Divider(),
             const SizedBox(height: 10.0),
             ListView.builder(
+                //remove scrollability from inner listview - ct like its part of outer list view:
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount:
                     news_data == null ? 0 : news_data[0]["articles"].length - 1,
