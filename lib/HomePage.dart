@@ -104,7 +104,7 @@ class HomePageState extends State<HomePage> {
                             // hintStyle: TextStyle(fontSize: 16.0, color: Colors.redAccent)
                           ),
                           style:
-                              TextStyle(color: Colors.black, fontSize: 16.0));
+                          TextStyle(color: Colors.black, fontSize: 16.0));
                     } else {
                       this.customIcon = Icon(Icons.search, color: Colors.black);
                       this.customSearchBar = Text(
@@ -131,246 +131,246 @@ class HomePageState extends State<HomePage> {
             const SizedBox(height: 5.0),
             Card(
                 child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: new BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.green,
-              ),
-              child: Text(
-                "LATEST MATCHES",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            )),
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: new BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: Colors.green,
+                  ),
+                  child: Text(
+                    "LATEST MATCHES",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )),
             const SizedBox(height: 5.0),
             raw_data[0]["data"].length != 0
                 ? new ListView.builder(
-                    //remove scrollability from inner listview - ct like its part of outer list view:
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount:
-                        raw_data == null ? 0 : raw_data[0]["data"].length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return new Card(
-                        elevation: 4.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Row(
-                            children: <Widget>[
-                              //Spacer(),
-                              raw_data[0]["data"][index]["time"]["status"] ==
-                                          "LIVE" ||
-                                      raw_data[0]["data"][index]["time"]
-                                              ["status"] ==
-                                          "HT"
-                                  ? Container(
-                                      height: 32.0,
-                                      width: 32.0,
-                                      padding: const EdgeInsets.all(10.0),
-                                      decoration: new BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(25.0),
-                                        color: Colors.green,
-                                      ),
-                                      child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            raw_data[0]["data"][index]["time"]
-                                                        ["status"] ==
-                                                    "LIVE"
-                                                ? Text(
-                                                    raw_data[0]["data"][index]
-                                                            ["time"]["minute"]
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 8.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                    textAlign: TextAlign.center,
-                                                  )
-                                                : Text(
-                                                    raw_data[0]["data"][index]
-                                                            ["time"]["status"]
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 8.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                    textAlign: TextAlign.center,
-                                                  )
-                                          ]))
-                                  : Container(
-                                      height: 32.0,
-                                      width: 32.0,
-                                      padding: const EdgeInsets.all(10.0),
-                                      decoration: new BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(25.0),
-                                        color: Colors.grey,
-                                      ),
-                                      child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Text(
-                                              raw_data[0]["data"][index]["time"]
-                                                  ["status"],
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 8.0,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ]),
+              //remove scrollability from inner listview - ct like its part of outer list view:
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount:
+              raw_data == null ? 0 : raw_data[0]["data"].length,
+              itemBuilder: (BuildContext context, int index) {
+                return new Card(
+                  elevation: 4.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: <Widget>[
+                        //Spacer(),
+                        raw_data[0]["data"][index]["time"]["status"] ==
+                            "LIVE" ||
+                            raw_data[0]["data"][index]["time"]
+                            ["status"] ==
+                                "HT"
+                            ? Container(
+                            height: 32.0,
+                            width: 32.0,
+                            padding: const EdgeInsets.all(10.0),
+                            decoration: new BoxDecoration(
+                              borderRadius:
+                              BorderRadius.circular(25.0),
+                              color: Colors.green,
+                            ),
+                            child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.center,
+                                children: <Widget>[
+                                  raw_data[0]["data"][index]["time"]
+                                  ["status"] ==
+                                      "LIVE"
+                                      ? Text(
+                                    raw_data[0]["data"][index]
+                                    ["time"]["minute"]
+                                        .toString(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 8.0,
+                                      fontWeight:
+                                      FontWeight.bold,
                                     ),
-                              Spacer(),
-                              Image.network(
-                                  raw_data[0]["data"][index]["localTeam"]
-                                      ["data"]["logo_path"],
-                                  width: 25,
-                                  height: 25),
-                              Spacer(),
-                              SizedBox(
-                                width: 60,
-                                child: Text(
-                                  raw_data[0]["data"][index]["localTeam"]
-                                          ["data"]["name"]
-                                      .toString(),
-                                  style: teamNameTextStyle,
+                                    textAlign: TextAlign.center,
+                                  )
+                                      : Text(
+                                    raw_data[0]["data"][index]
+                                    ["time"]["status"]
+                                        .toString(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 8.0,
+                                      fontWeight:
+                                      FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ]))
+                            : Container(
+                          height: 32.0,
+                          width: 32.0,
+                          padding: const EdgeInsets.all(10.0),
+                          decoration: new BoxDecoration(
+                            borderRadius:
+                            BorderRadius.circular(25.0),
+                            color: Colors.grey,
+                          ),
+                          child: Column(
+                              mainAxisAlignment:
+                              MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  raw_data[0]["data"][index]["time"]
+                                  ["status"],
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 8.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                   textAlign: TextAlign.center,
                                 ),
-                              ),
-                              Spacer(),
-                              raw_data[0]["data"][index]["time"]["status"] !=
-                                      "NS"
-                                  ? Row(children: [
-                                      SizedBox(
-                                        width: 30,
-                                        child: Text(
-                                          raw_data[0]["data"][index]["scores"]
-                                                  ["localteam_score"]
-                                              .toString(),
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                      Text(
-                                        "-",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18.0,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                        child: Text(
-                                          raw_data[0]["data"][index]["scores"]
-                                                  ["visitorteam_score"]
-                                              .toString(),
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ])
-                                  : Row(children: [
-                                      SizedBox(
-                                        width: 70,
-                                        child: Text(
-                                          DateFormat.jm().format(
-                                              DateFormat("hh:mm:ss").parse(
-                                                  raw_data[0]["data"][index]
-                                                          ["time"]
-                                                      ["starting_at"]["time"])),
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15.0,
-                                            color: Colors.grey,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      )
-                                    ]),
-                              Spacer(),
-                              SizedBox(
-                                width: 60,
-                                child: Text(
-                                  raw_data[0]["data"][index]["visitorTeam"]
-                                          ["data"]["name"]
-                                      .toString(),
-                                  style: teamNameTextStyle,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              Spacer(),
-                              Image.network(
-                                  raw_data[0]["data"][index]["visitorTeam"]
-                                      ["data"]["logo_path"],
-                                  width: 25,
-                                  height: 25),
-                              Spacer(),
-                              Spacer(),
-                            ],
+                              ]),
+                        ),
+                        Spacer(),
+                        Image.network(
+                            raw_data[0]["data"][index]["localTeam"]
+                            ["data"]["logo_path"],
+                            width: 25,
+                            height: 25),
+                        Spacer(),
+                        SizedBox(
+                          width: 60,
+                          child: Text(
+                            raw_data[0]["data"][index]["localTeam"]
+                            ["data"]["name"]
+                                .toString(),
+                            style: teamNameTextStyle,
+                            textAlign: TextAlign.center,
                           ),
                         ),
-                      );
-                    },
-                  )
-                : new Container(
-                    //height: 100,
-                    child: Card(
-                      elevation: 4.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          "NO GAMES CURRENTLY LIVE",
-                          style: teamNameTextStyle,
-                          textAlign: TextAlign.center,
+                        Spacer(),
+                        raw_data[0]["data"][index]["time"]["status"] !=
+                            "NS"
+                            ? Row(children: [
+                          SizedBox(
+                            width: 30,
+                            child: Text(
+                              raw_data[0]["data"][index]["scores"]
+                              ["localteam_score"]
+                                  .toString(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Text(
+                            "-",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 30,
+                            child: Text(
+                              raw_data[0]["data"][index]["scores"]
+                              ["visitorteam_score"]
+                                  .toString(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ])
+                            : Row(children: [
+                          SizedBox(
+                            width: 70,
+                            child: Text(
+                              DateFormat.jm().format(
+                                  DateFormat("hh:mm:ss").parse(
+                                      raw_data[0]["data"][index]
+                                      ["time"]
+                                      ["starting_at"]["time"])),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0,
+                                color: Colors.grey,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                        ]),
+                        Spacer(),
+                        SizedBox(
+                          width: 60,
+                          child: Text(
+                            raw_data[0]["data"][index]["visitorTeam"]
+                            ["data"]["name"]
+                                .toString(),
+                            style: teamNameTextStyle,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      ),
+                        Spacer(),
+                        Image.network(
+                            raw_data[0]["data"][index]["visitorTeam"]
+                            ["data"]["logo_path"],
+                            width: 25,
+                            height: 25),
+                        Spacer(),
+                        Spacer(),
+                      ],
                     ),
                   ),
+                );
+              },
+            )
+                : new Container(
+              //height: 100,
+              child: Card(
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    "NO GAMES CURRENTLY IN SCHEDULE",
+                    style: teamNameTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
             const SizedBox(height: 20.0),
             Divider(),
             const SizedBox(height: 20.0),
             Card(
                 child: Container(
-              padding: const EdgeInsets.all(10.0),
-              decoration: new BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.orange,
-              ),
-              child: Text(
-                "BREAKING NEWS",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            )),
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: new BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: Colors.orange,
+                  ),
+                  child: Text(
+                    "BREAKING NEWS",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )),
             const SizedBox(height: 5.0),
             GestureDetector(
               onTap: () => _launchURL(news_data[0]["articles"][0]["url"]),
@@ -409,15 +409,15 @@ class HomePageState extends State<HomePage> {
                             children: <Widget>[
                               Text(
                                 news_data[0]["articles"][0]["publishedAt"]
-                                        .substring(0, 10) +
+                                    .substring(0, 10) +
                                     ", " +
                                     DateFormat.jm().format(
                                         DateFormat("hh:mm:ss").parse(
                                             dateTimeToZone(
-                                                    zone: "EST",
-                                                    datetime: DateTime.parse(
-                                                        news_data[0]["articles"]
-                                                            [0]["publishedAt"]))
+                                                zone: "EST",
+                                                datetime: DateTime.parse(
+                                                    news_data[0]["articles"]
+                                                    [0]["publishedAt"]))
                                                 .toString()
                                                 .substring(11, 19))) +
                                     " EST",
@@ -463,11 +463,11 @@ class HomePageState extends State<HomePage> {
             Divider(),
             const SizedBox(height: 10.0),
             ListView.builder(
-                //remove scrollability from inner listview - ct like its part of outer list view:
+              //remove scrollability from inner listview - ct like its part of outer list view:
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount:
-                    news_data == null ? 0 : news_data[0]["articles"].length - 1,
+                news_data == null ? 0 : news_data[0]["articles"].length - 1,
                 itemBuilder: (BuildContext context, int index) {
                   return new ListTile(
                     onTap: () =>
@@ -481,15 +481,15 @@ class HomePageState extends State<HomePage> {
                     subtitle: Padding(
                       padding: EdgeInsets.only(top: 5),
                       child: Text(news_data[0]["articles"][index + 1]
-                                  ["publishedAt"]
-                              .substring(0, 10) +
+                      ["publishedAt"]
+                          .substring(0, 10) +
                           ", " +
                           DateFormat.jm().format(DateFormat("hh:mm:ss").parse(
                               dateTimeToZone(
-                                      zone: "EST",
-                                      datetime: DateTime.parse(news_data[0]
-                                              ["articles"][index + 1]
-                                          ["publishedAt"]))
+                                  zone: "EST",
+                                  datetime: DateTime.parse(news_data[0]
+                                  ["articles"][index + 1]
+                                  ["publishedAt"]))
                                   .toString()
                                   .substring(11, 19))) +
                           " EST"),
@@ -500,7 +500,7 @@ class HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(10.0),
                           image: DecorationImage(
                             image: NetworkImage(news_data[0]["articles"]
-                                [index + 1]["urlToImage"]),
+                            [index + 1]["urlToImage"]),
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -572,7 +572,7 @@ class HomePageState extends State<HomePage> {
   Future<String> getScoresData() async {
     try {
       http.Response response = await http.get(
-          //Uri.encodeFull removes all the dashes or extra characters present in our Uri
+        //Uri.encodeFull removes all the dashes or extra characters present in our Uri
           Uri.encodeFull(
               "https://football-pro.p.rapidapi.com/api/v2.0/livescores?tz=Canada/Eastern&markets=1&include=localTeam,visitorTeam&leagues=8,564,384,82,301"),
           //prem, la liga, seria a, bundes, ligue 1

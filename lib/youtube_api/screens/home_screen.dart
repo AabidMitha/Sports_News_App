@@ -149,6 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
     print(index);
     setState(() {
       if (index == 0) {
+        Navigator.pop(context);
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => HomePage()));
       }
