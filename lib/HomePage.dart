@@ -192,7 +192,7 @@ class HomePageState extends State<HomePage> {
                                         .toString(),
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 8.0,
+                                      fontSize: 9.0,
                                       fontWeight:
                                       FontWeight.bold,
                                     ),
@@ -204,7 +204,7 @@ class HomePageState extends State<HomePage> {
                                         .toString(),
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 8.0,
+                                      fontSize: 9.0,
                                       fontWeight:
                                       FontWeight.bold,
                                     ),
@@ -229,7 +229,7 @@ class HomePageState extends State<HomePage> {
                                   ["status"],
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 8.0,
+                                    fontSize: 9.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textAlign: TextAlign.center,
@@ -574,9 +574,9 @@ class HomePageState extends State<HomePage> {
       http.Response response = await http.get(
         //Uri.encodeFull removes all the dashes or extra characters present in our Uri
           Uri.encodeFull(
-              "https://football-pro.p.rapidapi.com/api/v2.0/livescores?tz=Canada/Eastern&markets=1&include=localTeam,visitorTeam&leagues=8,564,384,82,301"),
+              "https://football-pro.p.rapidapi.com/api/v2.0/livescores?tz=Canada/Eastern&markets=1&include=localTeam,visitorTeam&leagues=8,564,384,82,301,390"),
           //prem, la liga, seria a, bundes, ligue 1
-          //https://football-pro.p.rapidapi.com/api/v2.0/livescores?tz=Canada/Eastern&markets=1&include=localTeam,visitorTeam&leagues=8,564,384,82,301 //prem, la liga, seria a, bundes, ligue 1
+          //https://football-pro.p.rapidapi.com/api/v2.0/livescores?tz=Canada/Eastern&markets=1&include=localTeam,visitorTeam&leagues=8,564,384,82,301 //prem, la liga, seria a, bundes, ligue 1, coppa italia
           //https://football-pro.p.rapidapi.com/api/v2.0/fixtures/date/2020-5-27?tz=Canada/Eastern&markets=1&include=localTeam,visitorTeam&leagues=8,82 - scores by date
           //https://football-pro.p.rapidapi.com/api/v2.0/livescores/now?markets=1&include=localTeam,visitorTeam&leagues=8,564,384,82,301) - live scores
           headers: {
