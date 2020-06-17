@@ -16,4 +16,5 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 Check out a video of the app below:
-- [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/7GlYjPHcMKw/0.jpg)](https://www.youtube.com/watch?v=7GlYjPHcMKw)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/7GlYjPHcMKw/0.jpg)](https://www.youtube.com/watch?v=7GlYjPHcMKw)
