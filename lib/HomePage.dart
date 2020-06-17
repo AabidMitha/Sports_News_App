@@ -67,7 +67,7 @@ class HomePageState extends State<HomePage> {
       fontWeight: FontWeight.bold,
     );
     var teamNameTextStyle = TextStyle(
-      fontSize: 12.0,
+      fontSize: 11.0,
       fontWeight: FontWeight.w500,
       color: Colors.grey.shade800,
     );
@@ -161,7 +161,7 @@ class HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Row(
                       children: <Widget>[
                         //Spacer(),
