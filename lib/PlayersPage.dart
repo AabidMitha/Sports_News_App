@@ -72,8 +72,10 @@ class PlayersPageState extends State<PlayersPage> {
   Widget build(BuildContext context) {
     if (loaded == true) {
       return Scaffold(
-        backgroundColor: player_club_team_data[0]["data"]["venue"]["data"]["image_path"] !=
-            null ? Colors.grey[900] : Colors.white,
+        backgroundColor: player_club_team_data[0]["data"]["venue"] != null &&
+            player_club_team_data[0]["data"]["venue"]["data"]["image_path"] !=
+                null ?
+        Colors.grey[900] : Colors.white,
         appBar: AppBar(
           title: Text("" /*widget.playerName*/),
         ),
@@ -97,8 +99,9 @@ class PlayersPageState extends State<PlayersPage> {
                 )
             ) :
             Container(
-              decoration: player_club_team_data[0]["data"]["venue"]["data"]["image_path"] !=
-                  null ?
+              decoration: player_club_team_data[0]["data"]["venue"] != null &&
+                  player_club_team_data[0]["data"]["venue"]["data"]["image_path"] !=
+                      null ?
               BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(
