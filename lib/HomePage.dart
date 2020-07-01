@@ -258,14 +258,14 @@ class HomePageState extends State<HomePage> {
                                       "NS"
                                   ? Row(children: [
                                       SizedBox(
-                                        width: 30,
+                                        width: 25,
                                         child: Text(
                                           raw_data[0]["data"][index]["scores"]
                                                   ["localteam_score"]
                                               .toString(),
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 20.0,
+                                            fontSize: 18.0,
                                           ),
                                           textAlign: TextAlign.center,
                                         ),
@@ -274,18 +274,18 @@ class HomePageState extends State<HomePage> {
                                         "-",
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 18.0,
+                                          fontSize: 16.0,
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 30,
+                                        width: 25,
                                         child: Text(
                                           raw_data[0]["data"][index]["scores"]
                                                   ["visitorteam_score"]
                                               .toString(),
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 20.0,
+                                            fontSize: 18.0,
                                           ),
                                           textAlign: TextAlign.center,
                                         ),
@@ -503,8 +503,13 @@ class HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
                           image: DecorationImage(
-                            image: NetworkImage(news_data[0]["articles"]
-                                [index + 1]["urlToImage"]),
+                            image: news_data[0]["articles"][index + 1]
+                                        ["urlToImage"] !=
+                                    null
+                                ? NetworkImage(news_data[0]["articles"]
+                                    [index + 1]["urlToImage"])
+                                : NetworkImage(
+                                    "https://upload.wikimedia.org/wikipedia/en/thumb/b/b5/BBC_Sport_2017.svg/1200px-BBC_Sport_2017.svg.png"),
                             fit: BoxFit.cover,
                           )),
                     ),
