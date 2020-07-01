@@ -99,10 +99,11 @@ class HomePageState extends State<HomePage> {
                                     builder: (context) => PlayersPage(value)));
                           },
                           decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "type player name:",
-                            // hintStyle: TextStyle(fontSize: 16.0, color: Colors.redAccent)
-                          ),
+                              border: InputBorder.none,
+                              hintText: "type player name:",
+                              hintStyle: TextStyle(fontStyle: FontStyle.italic)
+                              // hintStyle: TextStyle(fontSize: 16.0, color: Colors.redAccent)
+                              ),
                           style:
                               TextStyle(color: Colors.black, fontSize: 16.0));
                     } else {
