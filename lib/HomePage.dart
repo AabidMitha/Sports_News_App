@@ -293,7 +293,7 @@ class HomePageState extends State<HomePage> {
                                     ])
                                   : Row(children: [
                                       SizedBox(
-                                        width: 70,
+                                        width: 60,
                                         child: Text(
                                           DateFormat.jm().format(
                                               DateFormat("hh:mm:ss").parse(
@@ -602,11 +602,15 @@ class HomePageState extends State<HomePage> {
 
   //This function gets the latest matches information
   Future<String> getLatestNews() async {
+    var yesterdayDate = new DateTime.now().subtract(Duration(days: 1));
+    var formatter = new DateFormat('yyyy-MM-dd');
+    String formattedDate = formatter.format(yesterdayDate);
+    //print(month);
     try {
       http.Response response = await http.get(
         //Uri.encodeFull removes all the dashes or extra characters present in our Uri
         Uri.encodeFull(
-            "http://newsapi.org/v2/everything?q=premier-league&sources=bbc-news&from=2020-05-25&sortBy=publishedAt&apiKey=$NEWSAPI_KEY"),
+            "http://newsapi.org/v2/everything?q=premier-league&sources=bbc-news&from=$formattedDate&sortBy=publishedAt&apiKey=$NEWSAPI_KEY"),
       );
       this.setState(() {
         news_data = [json.decode(response.body)];
