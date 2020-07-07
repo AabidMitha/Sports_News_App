@@ -377,91 +377,94 @@ class HomePageState extends State<HomePage> {
               ),
             )),
             const SizedBox(height: 5.0),
-            GestureDetector(
-              onTap: () => _launchURL(news_data[0]["articles"][0]["url"]),
-              child: Card(
-                elevation: 4.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Stack(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          height: 200.0,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10.0),
-                                topRight: Radius.circular(10.0),
-                              ),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    news_data[0]["articles"][0]["urlToImage"]),
-                                fit: BoxFit.cover,
-                              )),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Text(
-                            news_data[0]["articles"][0]["title"],
-                            style: titleTextStyle,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                news_data[0]["articles"][0]["publishedAt"]
-                                        .substring(0, 10) +
-                                    ", " +
-                                    DateFormat.jm().format(
-                                        DateFormat("hh:mm:ss").parse(
-                                            dateTimeToZone(
-                                                    zone: "EST",
-                                                    datetime: DateTime.parse(
-                                                        news_data[0]["articles"]
-                                                            [0]["publishedAt"]))
-                                                .toString()
-                                                .substring(11, 19))) +
-                                    " EST",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 14.0,
-                                ),
-                              ),
-                              Spacer(),
-                              Text(
-                                "Football",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 14.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 20.0),
-                      ],
-                    ),
-                    Positioned(
-                      top: 190,
-                      left: 20.0,
-                      child: Container(
-                        color: Colors.green,
-                        padding: const EdgeInsets.all(4.0),
+            Card(
+              elevation: 4.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Stack(
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        height: 200.0,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  news_data[0]["articles"][0]["urlToImage"]),
+                              fit: BoxFit.cover,
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          "LIVE",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.0,
-                          ),
+                          news_data[0]["articles"][0]["title"],
+                          style: titleTextStyle,
                         ),
                       ),
-                    )
-                  ],
-                ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Row(
+                          children: <Widget>[
+                            Text(
+                              news_data[0]["articles"][0]["publishedAt"]
+                                      .substring(0, 10) +
+                                  ", " +
+                                  DateFormat.jm().format(DateFormat("hh:mm:ss")
+                                      .parse(dateTimeToZone(
+                                              zone: "EST",
+                                              datetime: DateTime.parse(
+                                                  news_data[0]["articles"][0]
+                                                      ["publishedAt"]))
+                                          .toString()
+                                          .substring(11, 19))) +
+                                  " EST",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 14.0,
+                              ),
+                            ),
+                            Spacer(),
+                            Text(
+                              "Football",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 14.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
+                    ],
+                  ),
+                  Positioned(
+                    top: 190,
+                    left: 20.0,
+                    child: Container(
+                      color: Colors.green,
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        "LIVE",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  new Positioned.fill(
+                      child: new Material(
+                          color: Colors.transparent,
+                          child: new InkWell(
+                            onTap: () =>
+                                _launchURL(news_data[0]["articles"][0]["url"]),
+                          )))
+                ],
               ),
             ),
             const SizedBox(height: 10.0),
