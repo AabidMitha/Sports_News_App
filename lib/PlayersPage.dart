@@ -316,7 +316,7 @@ class PlayersPageState extends State<PlayersPage> {
                                                   "birthdate"]))
                                                       .inDays /
                                                       365)
-                                                      .round()
+                                                      .floor()
                                                       .toString(),
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(),
